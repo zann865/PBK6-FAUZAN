@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pencari Pengguna GitHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Pencari Pengguna GitHub</h1>
+        <p>Demonstrasi JavaScript Asynchronous</p>
+        
+        <div class="search-container">
+            <input type="text" id="username" placeholder="Masukkan username GitHub">
+            <div class="buttons">
+                <button id="search-callback">Cari (Callback)</button>
+                <button id="search-promise">Cari (Promise)</button>
+                <button id="search-async">Cari (Async/Await)</button>
+            </div>
+        </div>
+        
+        <div class="method-indicator">Metode yang digunakan: <span id="method-used">-</span></div>
+        
+        <div class="loader" id="loader"></div>
+        
+        <div class="result-container">
+            <div id="user-info" class="user-info"></div>
+            <div class="repos-container">
+                <h2>Repositori</h2>
+                <ul id="repos-list"></ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Script -->
+    <script src="js/callback.js"></script>
+    <script src="js/promise.js"></script>
+    <script src="js/async.js"></script>
+    <script>
+        // Menambahkan event listener untuk tombol pencarian
+        document.getElementById('search-callback').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                document.getElementById('method-used').textContent = 'Callback';
+                searchUserWithCallback(username);
+            }
+        });
+        
+        document.getElementById('search-promise').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                document.getElementById('method-used').textContent = 'Promise';
+                searchUserWithPromise(username);
+            }
+        });
+        
+        document.getElementById('search-async').addEventListener('click', function() {
+            const username = document.getElementById('username').value;
+            if (username) {
+                document.getElementById('method-used').textContent = 'Async/Await';
+                searchUserWithAsyncAwait(username);
+            }
+        });
+    </script>
+</body>
+</html>
